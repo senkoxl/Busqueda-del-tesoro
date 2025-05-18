@@ -1,0 +1,120 @@
+<section
+  id="Entradas"
+  class="relative bg-[var(--color-theme-lightbrown)] py-20 px-4 text-center"
+>
+  <h2 class="text-4xl font-bold mb-4 text-[var(--color-primary)]">
+    Consigue tu entrada
+  </h2>
+  <p class="text-lg text-[var(--color-primary)] mb-10 max-w-xl mx-auto">
+    Accede al evento y vive una experiencia inolvidable. Cupos limitados.
+  </p>
+
+  <div
+    class="bg-white/60 backdrop-blur-md rounded-xl shadow-lg max-w-3xl mx-auto px-6 py-6 flex justify-between items-center"
+  >
+    <!-- FECHA -->
+    <div class="flex items-center gap-4">
+      <div class="text-6xl font-bold text-[var(--color-theme-green)]">22</div>
+      <div class="flex flex-col items-start leading-tight">
+        <p class="text-xl text-[var(--color-primary)] font-semibold">15/06</p>
+        <p class="text-base text-[var(--color-primary)]">2025</p>
+      </div>
+    </div>
+
+    <!-- BOTÓN -->
+    <a
+      href="#"
+      onclick="abrirModal()"
+      class="flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-theme-green)] via-[var(--color-theme-lightgreen)] to-[var(--color-theme-green)] px-6 py-3 font-bold text-white shadow-lg shadow-[var(--color-theme-green)]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[var(--color-theme-green)]/40"
+    >
+      <svg
+        class="h-5 w-5 -rotate-12 animate-bounce fill-white hidden sm:inline"
+        viewBox="0 0 24 24"
+      >
+        <path d="M5 4v3H2v10h3v3h17V4H5zm15 14H7v-2H4v-6h3V8h13v10z"></path>
+      </svg>
+      <span>Adquirir entrada</span>
+    </a>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div
+  id="modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+>
+  <div
+    class="bg-white p-6 rounded-xl max-w-md w-full text-left shadow-lg relative"
+  >
+    <button
+      onclick="cerrarModal()"
+      class="absolute top-2 right-2 text-xl font-bold text-gray-600 hover:text-black"
+    >
+      ×
+    </button>
+    <h3 class="text-xl font-bold mb-4 text-[var(--color-primary)]">
+      Compra tu entrada
+    </h3>
+
+    <form onsubmit="enviarWhatsApp(event)">
+      <label
+        for="nombre"
+        class="text-[var(--color-primary)] block mb-1 font-semibold"
+        >Nombre:</label
+      >
+      <input
+        type="text"
+        id="nombre"
+        required
+        class="w-full p-2 mb-4 border-2 border-black rounded-lg focus:outline-none text-black"
+      />
+
+      <label
+        for="correo"
+        class="text-[var(--color-primary)] block mb-1 font-semibold"
+        >Correo:</label
+      >
+      <input
+        type="email"
+        id="correo"
+        required
+        class="w-full p-2 mb-4 border-2 border-black rounded-lg focus:outline-none text-black"
+      />
+
+      <button
+        type="submit"
+        class="w-full bg-[var(--color-theme-green)] text-white font-bold py-2 rounded-lg hover:bg-[var(--color-theme-lightgreen)] transition"
+      >
+        Confirmar y continuar a WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script is:inline>
+  function abrirModal() {
+    document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("modal").classList.add("flex");
+  }
+
+  function cerrarModal() {
+    document.getElementById("modal").classList.add("hidden");
+    document.getElementById("modal").classList.remove("flex");
+  }
+
+  function enviarWhatsApp(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+
+    const numero = "573127351314"; // ← CAMBIA esto por tu número real
+    const mensaje = `Hola ${nombre}, para comprar tu entrada debes enviar un mensaje a este numero y ahi se te proporsionara el metodo de pago que mas desees. Por motivos de seguridad en tu compra en el mensaje deberas incluir tu nombre: ${nombre}, y tu correo: ${correo}, gracias por tu compra y mucha suerte en encontrar el tesoro.`;
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+
+    cerrarModal();
+  }
+</script>

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #261b14;
+
+  --color-theme-brown: #8c6a3f;
+  --color-theme-lightbrown: #f2da91;
+  --color-theme-green: #025928;
+  --color-theme-lightgreen: #027333;
+}
+
+@font-face {
+  font-family: "BillionDreams";
+  src: url("../../public/fonts/BillionDreams_PERSONAL.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "kiwiFruit";
+  src: url(../../public/fonts/KiwiFruit.woff2) format(woff2);
+}
+
+:root {
+  --font-titulo: "BillionDreams";
+  --font-subtitulo: "KiwiFruit";
+}
+
+.marquee-bg {
+  width: 100%;
+  height: 50px;
+  background: repeating-linear-gradient(to right, #8c6a3f 0, #8c6a3f 100%);
+  overflow: hidden;
+  position: relative;
+}
