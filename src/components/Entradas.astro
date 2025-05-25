@@ -16,7 +16,7 @@
     <div class="flex items-center gap-4">
       <div class="text-6xl font-bold text-[var(--color-theme-green)]">22</div>
       <div class="flex flex-col items-start leading-tight">
-        <p class="text-xl text-[var(--color-primary)] font-semibold">15/06</p>
+        <p class="text-xl text-[var(--color-primary)] font-semibold">06</p>
         <p class="text-base text-[var(--color-primary)]">2025</p>
       </div>
     </div>
@@ -80,7 +80,28 @@
         required
         class="w-full p-2 mb-4 border-2 border-black rounded-lg focus:outline-none text-black"
       />
-
+      <label
+        for="numero"
+        class="text-[var(--color-primary)] block mb-1 font-semibold"
+        >Telefono:</label
+      >
+      <input
+        type="number"
+        id="numero"
+        required
+        class="w-full p-2 mb-4 border-2 border-black rounded-lg focus:outline-none text-black"
+      />
+      <label
+        for="Cedula"
+        class="text-[var(--color-primary)] block mb-1 font-semibold"
+        >Cedula:</label
+      >
+      <input
+        type="number"
+        id="Cedula"
+        required
+        class="w-full p-2 mb-4 border-2 border-black rounded-lg focus:outline-none text-black"
+      />
       <button
         type="submit"
         class="w-full bg-[var(--color-theme-green)] text-white font-bold py-2 rounded-lg hover:bg-[var(--color-theme-lightgreen)] transition"
@@ -108,9 +129,11 @@
 
     const nombre = document.getElementById("nombre").value;
     const correo = document.getElementById("correo").value;
+    const telefono = document.getElementById("numero").value;
+    const cedula = document.getElementById("Cedula").value;
 
     const numero = "573127351314"; // ← CAMBIA esto por tu número real
-    const mensaje = `Hola ${nombre}, para comprar tu entrada debes enviar un mensaje a este numero y ahi se te proporsionara el metodo de pago que mas desees. Por motivos de seguridad en tu compra en el mensaje deberas incluir tu nombre: ${nombre}, y tu correo: ${correo}, gracias por tu compra y mucha suerte en encontrar el tesoro.`;
+    const mensaje = `Hola ${nombre}, debes copiar/enviar este mensaje para poder adquirir tu entrada:\n\n°${nombre}\n°${correo}\n°${telefono}\n°${cedula}\n\ngracias por tu compra y mucha suerte en encontrar el tesoro.`;
 
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
